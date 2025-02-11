@@ -18,8 +18,6 @@
                     class="absolute inset-0 bg-gray-200 opacity-0 transition duration-300" 
                     :class="{'opacity-50': isActive, 'group-hover:opacity-50': !isActive}"
                 ></div>
-
-                <!-- Ikon ceklis abu-abu -->
                 <div 
                     v-if="isActive"
                     class="absolute top-1 right-1 bg-gray-400 text-white rounded-full p-1 flex items-center justify-center"

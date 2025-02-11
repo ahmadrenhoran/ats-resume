@@ -74,6 +74,40 @@
             </button>
         </div>
         <hr class="mt-8 mb-8 border-gray-300">
+        <div ref="selectionContainer">
+            <div v-show="selectLangSection" class="grid grid-cols-1 gap-4">
+                <SkillInput title="Languages" fieldName="Language"
+                    description="Languages you speak fluently or are learning." type="dropdown" />
+                <hr class="mt-8 mb-8 border-gray-300">
+            </div>
+
+            <div v-show="selectHardSklSection" class="grid grid-cols-1 gap-4">
+                <SkillInput title="Hard Skills"
+                    description="Technical skills such as programming, design, or data analysis." type="dropdown" />
+                <hr class="mt-8 mb-8 border-gray-300">
+            </div>
+
+            <div v-show="selectSoftSklSection" class="grid grid-cols-1 gap-4">
+                <SkillInput title="Soft Skills"
+                    description="Interpersonal skills like communication, leadership, and teamwork." type="dropdown" />
+                <hr class="mt-8 mb-8 border-gray-300">
+            </div>
+
+            <div v-show="selectCertSection" class="grid grid-cols-1 gap-4">
+                <SkillInput title="Certifications" fieldName="Certification Name"
+                    description="List your certifications along with the year obtained." type="year" />
+                <hr class="mt-8 mb-8 border-gray-300">
+            </div>
+
+            <div v-show="selectSocialSection" class="grid grid-cols-1 gap-4">
+                <SkillInput title="Website & Social" fieldName="Social Media Name"
+                    description="Add links to your portfolio, LinkedIn, GitHub, or other social profiles."
+                    type="link" />
+                <hr class="mt-8 mb-8 border-gray-300">
+            </div>
+
+        </div>
+
         <div class="grid grid-cols-1 gap-4">
             <div>
                 <h1 class="text-xl font-semibold col-span-1">Additional Sections</h1>
@@ -82,11 +116,16 @@
                 </p>
             </div>
             <div class="grid grid-cols-3 gap-y-5">
-                <Additional :imgPath="'/images/elearning.png'" :alt="'Language'" :title="'Languages'" :isActive="selectLangSection"  :onClick="() => selectLangSection = !selectLangSection"/>
-                <Additional :imgPath="'/images/hardskill.png'" :alt="'Hard Skills'" :title="'Hard Skills'" :isActive="selectHardSklSection" :onClick="() => selectHardSklSection = !selectHardSklSection"/>
-                <Additional :imgPath="'/images/softskill.png'" :alt="'Soft Skills'" :title="'Soft Skills'" :isActive="selectSoftSklSection" :onClick="() => selectSoftSklSection = !selectSoftSklSection"/>
-                <Additional :imgPath="'/images/certificate.png'" :alt="'Certificates'" :title="'Certificates'" :isActive="selectCertSection" :onClick="() => selectCertSection = !selectCertSection"/>
-                <Additional :imgPath="'/images/social.png'" :alt="'Socials'" :title="'Website & Socials'" :isActive="selectSocialSection" :onClick="() => selectSocialSection = !selectSocialSection"/>
+                <Additional :imgPath="'/images/elearning.png'" :alt="'Language'" :title="'Languages'"
+                    :isActive="selectLangSection" :onClick="() => selectLangSection = !selectLangSection" />
+                <Additional :imgPath="'/images/hardskill.png'" :alt="'Hard Skills'" :title="'Hard Skills'"
+                    :isActive="selectHardSklSection" :onClick="() => selectHardSklSection = !selectHardSklSection" />
+                <Additional :imgPath="'/images/softskill.png'" :alt="'Soft Skills'" :title="'Soft Skills'"
+                    :isActive="selectSoftSklSection" :onClick="() => selectSoftSklSection = !selectSoftSklSection" />
+                <Additional :imgPath="'/images/certificate.png'" :alt="'Certificates'" :title="'Certificates'"
+                    :isActive="selectCertSection" :onClick="() => selectCertSection = !selectCertSection" />
+                <Additional :imgPath="'/images/social.png'" :alt="'Socials'" :title="'Website & Socials'"
+                    :isActive="selectSocialSection" :onClick="() => selectSocialSection = !selectSocialSection" />
             </div>
         </div>
     </div>
@@ -101,6 +140,7 @@
     import Experience from './ExperienceField.vue';
     import Education from './EducationField.vue';
     import Additional from './AdditionalCard.vue';
+    import SkillInput from './SkillField.vue';
 
     const experiences = ref([{
         title: '',
@@ -130,6 +170,7 @@
     const selectSoftSklSection = ref(false);
     const selectCertSection = ref(false);
     const selectSocialSection = ref(false);
+    const selectionContainer = ref(null);
 
     const addExp = () => {
         experiences.value.push({
@@ -173,6 +214,10 @@
 
         if (educationContainer.value) {
             autoAnimate(educationContainer.value);
+        }
+
+        if (selectionContainer.value) {
+            autoAnimate(selectionContainer.value);
         }
     });
 </script>
