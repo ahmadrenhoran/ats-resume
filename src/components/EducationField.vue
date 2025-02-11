@@ -49,8 +49,7 @@
 
         <div class="col-span-2">
             <label for="description" class="block text-sm font-semibold text-gray-900 mb-1">Description</label>
-            <textarea id="description" v-model="education.description" rows="4" placeholder="Enter Your achievement, gpa, or what you do in school"
-                class="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline outline-gray-300 placeholder:text-gray-400 focus:outline-amber-500"></textarea>
+            <TextEditor v-model="education.description" />
         </div>
     </div>
 </template>
@@ -59,6 +58,7 @@
     import {
         defineProps
     } from 'vue';
+    import TextEditor from './TextEditor.vue'
 
     defineProps({
         education: Object,

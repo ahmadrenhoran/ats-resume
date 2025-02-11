@@ -7,35 +7,58 @@
                     Include your basic information to help employers get to know you better.
                 </p>
             </div>
+
             <div class="col-span-2">
                 <label for="job-title" class="block text-sm font-semibold text-gray-900 mb-1">Job Title</label>
-                <input type="text" id="job-title" placeholder="Enter Job Title"
+                <input type="text" id="job-title" placeholder="Enter Job Title" v-model="personalDetails.jobTitle"
                     class="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline outline-gray-300 placeholder:text-gray-400 focus:outline-amber-500">
             </div>
+
             <div class="col-span-1">
                 <label for="first-name" class="block text-sm font-semibold text-gray-900 mb-1">First Name</label>
                 <input type="text" id="first-name" autocomplete="given-name" placeholder="Enter First Name"
+                    v-model="personalDetails.firstName"
                     class="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline outline-gray-300 placeholder:text-gray-400 focus:outline-amber-500">
             </div>
+
             <div class="col-span-1">
                 <label for="last-name" class="block text-sm font-semibold text-gray-900 mb-1">Last Name</label>
                 <input type="text" id="last-name" autocomplete="family-name" placeholder="Enter Last Name"
+                    v-model="personalDetails.lastName"
                     class="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline outline-gray-300 placeholder:text-gray-400 focus:outline-amber-500">
             </div>
+
             <div class="col-span-1">
                 <label for="email" class="block text-sm font-semibold text-gray-900 mb-1">Email</label>
                 <input type="email" id="email" autocomplete="email" placeholder="Enter Email"
+                    v-model="personalDetails.email"
                     class="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline outline-gray-300 placeholder:text-gray-400 focus:outline-amber-500">
             </div>
+
             <div class="col-span-1">
-                <label for="location" class="block text-sm font-semibold text-gray-900 mb-1">Location</label>
-                <input type="text" id="location" autocomplete="address-level1" placeholder="Enter Location"
+                <label for="phone" class="block text-sm font-semibold text-gray-900 mb-1">Phone</label>
+                <input type="text" id="phone" autocomplete="tel" placeholder="Enter Phone Number"
+                    v-model="personalDetails.phone"
                     class="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline outline-gray-300 placeholder:text-gray-400 focus:outline-amber-500">
             </div>
+
+            <div class="col-span-1">
+                <label for="city" class="block text-sm font-semibold text-gray-900 mb-1">City</label>
+                <input type="text" id="city" autocomplete="address-level2" placeholder="Enter City"
+                    v-model="personalDetails.city"
+                    class="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline outline-gray-300 placeholder:text-gray-400 focus:outline-amber-500">
+            </div>
+
+            <div class="col-span-1">
+                <label for="country" class="block text-sm font-semibold text-gray-900 mb-1">Country</label>
+                <input type="text" id="country" autocomplete="country-name" placeholder="Enter Country"
+                    v-model="personalDetails.country"
+                    class="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline outline-gray-300 placeholder:text-gray-400 focus:outline-amber-500">
+            </div>
+
             <div class="col-span-2">
                 <label for="bio" class="block text-sm font-semibold text-gray-900 mb-1">Bio</label>
-                <textarea id="bio" rows="4" placeholder="Enter Bio"
-                    class="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline outline-gray-300 placeholder:text-gray-400 focus:outline-amber-500"></textarea>
+                <TextEditor v-model="personalDetails.bio" />
             </div>
         </div>
         <hr class="mt-8 mb-8 border-gray-300">
@@ -51,7 +74,7 @@
                     :index="index" :deleteExp="() => deleteExp(index)" />
             </div>
             <button @click="addExp"
-                class="border border-amber-500 hover:bg-amber-500 hover:text-white text-sm py-3 rounded-xl transition delay-150">
+                class="mb-4 border border-amber-500 hover:bg-amber-500 hover:text-white text-sm py-3 rounded-xl transition delay-150">
                 Add Experience
             </button>
         </div>
@@ -89,7 +112,8 @@
 
             <div v-show="selectSoftSklSection" class="grid grid-cols-1 gap-4">
                 <SkillInput title="Soft Skills"
-                    description="Interpersonal skills like communication, leadership, and teamwork." type="dropdown" />
+                    description="Interpersonal skills like communication, leadership, and teamwork."
+                    type="dropdown" />
                 <hr class="mt-8 mb-8 border-gray-300">
             </div>
 
@@ -141,6 +165,18 @@
     import Education from './EducationField.vue';
     import Additional from './AdditionalCard.vue';
     import SkillInput from './SkillField.vue';
+    import TextEditor from './TextEditor.vue';
+
+    const personalDetails = ref({
+        jobTitle: '',
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        city: '',
+        country: '',
+        bio: '',
+    })
 
     const experiences = ref([{
         title: '',
