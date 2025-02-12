@@ -20,7 +20,7 @@
                 ></div>
                 <div 
                     v-if="isActive"
-                    class="absolute top-1 right-1 bg-gray-400 text-white rounded-full p-1 flex items-center justify-center"
+                    class="absolute top-1 right-1 bg-gray-400 text-white rounded-full text-xl px-2 py-1 flex items-center justify-center"
                 >
                     ✔
                 </div>

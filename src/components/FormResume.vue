@@ -1,5 +1,5 @@
 <template>
-    <div class="container m-auto max-w-2xl py-24">
+    <div class="container m-auto max-w-2xl py-24 font-mono">
         <div class="grid grid-cols-2 gap-4">
             <div class="col-span-2">
                 <h1 class="text-xl font-semibold">Your Details</h1>
@@ -185,7 +185,7 @@
         endDate: '',
         city: '',
         country: '',
-        description: ''
+        description: '',
     }]);
     const experienceContainer = ref(null);
 
@@ -211,27 +211,27 @@
     const langSkills = ref([{
         'name': '', 
         'level': ''
-    }])
+    }]);
 
     const hardSkills = ref([{
         'name': '', 
         'level': ''
-    }])
+    }]);
 
     const softSkills = ref([{
         'name': '', 
         'level': ''
-    }])
+    }]);
 
     const certSkills = ref([{
         'name': '', 
         'level': ''
-    }])
+    }]);
 
     const socialSkills = ref([{
         'name': '', 
         'level': ''
-    }])
+    }]);
 
     const addExp = () => {
         experiences.value.push({

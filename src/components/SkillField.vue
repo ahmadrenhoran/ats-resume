@@ -11,13 +11,21 @@
             <input type="text" v-model="localSkills[index].name" :placeholder="fieldName"
                 class="border border-gray-300 rounded-md px-3 py-2 w-1/2 focus:outline-none focus:ring-2 focus:ring-amber-400" />
 
-            <select v-if="type === 'dropdown'" v-model="localSkills[index].level"
-                class="border border-gray-300 rounded-md px-3 py-2 w-1/3 focus:outline-none focus:ring-2 focus:ring-amber-400">
-                <option value="">Select Level</option>
-                <option value="Beginner">Beginner</option>
-                <option value="Intermediate">Intermediate</option>
-                <option value="Advanced">Advanced</option>
-            </select>
+            <div v-if="type === 'dropdown'" class="relative w-1/3">
+                <select  v-model="localSkills[index].level"
+                    class="col-start-1 row-start-1 appearance-none rounded-md px-3 py-2 w-1/3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-amber-400 sm:text-sm/6 w-full">
+                    <option value="">Select Level</option>
+                    <option value="Beginner">Beginner</option>
+                    <option value="Intermediate">Intermediate</option>
+                    <option value="Advanced">Advanced</option>
+                </select>
+
+                <svg class="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500 pointer-events-none"
+                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+            </div>
+
 
             <input v-else-if="type === 'year'" v-model="localSkills[index].level" type="text"
                 class="border border-gray-300 rounded-md px-3 py-2 w-1/3 focus:outline-none focus:ring-2 focus:ring-amber-400"
