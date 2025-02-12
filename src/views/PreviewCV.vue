@@ -1,36 +1,60 @@
 <template>
     <div class="bg-gray-900 min-h-screen p-8">
         <div class="cv-preview bg-white rounded-lg shadow-lg max-w-2xl mx-auto p-8">
-            <!-- Header Section -->
-            <div class="header text-center mb-8">
-                <h1 class="text-3xl font-bold text-gray-800">{{ cv . name }}</h1>
-                <p class="text-gray-600">{{ cv . title }}</p>
-            </div>
+            <h1 class="text-2xl font-bold text-center">Ronald Gunawan</h1>
+            <p class="text-center text-gray-600">Jakarta, Indonesia | ronald_gunawan@yahoo.com</p>
+            <p class="mt-4 text-gray-700 text-center">
+                Mahasiswa Universitas Trisakti semester 7 dengan pengalaman magang sebagai analis kredit.
+            </p>
 
-            <!-- Contact Information -->
-            <div class="contact-info mb-8">
-                <h2 class="text-xl font-semibold text-gray-800 mb-4">Contact Information</h2>
-                <p class="text-gray-700"><span class="font-medium">Email:</span> {{ cv . email }}</p>
-                <p class="text-gray-700"><span class="font-medium">Phone:</span> {{ cv . phone }}</p>
-                <p class="text-gray-700"><span class="font-medium">LinkedIn:</span> {{ cv . linkedin }}</p>
-            </div>
-
-            <!-- Experience Section -->
-            <div class="experience mb-8">
-                <h2 class="text-xl font-semibold text-gray-800 mb-4">Experience</h2>
-                <div v-for="(exp, index) in cv.experience" :key="index" class="mb-6">
-                    <h3 class="text-lg font-medium text-gray-800">{{ exp . position }} at {{ exp . company }}</h3>
-                    <p class="text-gray-600 text-sm">{{ exp . startDate }} - {{ exp . endDate }}</p>
-                    <p class="text-gray-700 mt-2">{{ exp . description }}</p>
+            <div class="mt-6 border-t pt-4">
+                <h2 class="text-xl font-semibold">Experiences</h2>
+                <div class="mt-3">
+                    <h3 class="font-bold">Staff Magang Analisis Kredit - Bank Central Asia (BCA)</h3>
+                    <p class="text-sm text-gray-600">Juni 2022 - Agustus 2022 | Jakarta, Indonesia</p>
+                    <ul class="list-disc ml-5 text-gray-700 mt-2">
+                        <li>Mengumpulkan informasi serta melakukan wawancara.</li>
+                        <li>Mengevaluasi rasio keuangan.</li>
+                        <li>Melakukan analisis kredit terperinci.</li>
+                    </ul>
+                </div>
+                <div class="mt-4">
+                    <h3 class="font-bold">Bendahara BEM - Jurusan Manajemen Keuangan Universitas Trisakti</h3>
+                    <p class="text-sm text-gray-600">2021-2022 | Jakarta, Indonesia</p>
+                    <ul class="list-disc ml-5 text-gray-700 mt-2">
+                        <li>Memastikan semua transaksi dicatat dengan akurat.</li>
+                        <li>Mengelola dokumen keuangan.</li>
+                    </ul>
                 </div>
             </div>
 
-            <!-- Education Section -->
-            <div class="education">
-                <h2 class="text-xl font-semibold text-gray-800 mb-4">Education</h2>
-                <div v-for="(edu, index) in cv.education" :key="index" class="mb-6">
-                    <h3 class="text-lg font-medium text-gray-800">{{ edu . degree }} at {{ edu . school }}</h3>
-                    <p class="text-gray-600 text-sm">{{ edu . startDate }} - {{ edu . endDate }}</p>
+            <div class="mt-6 border-t pt-4">
+                <h2 class="text-xl font-semibold">Educations</h2>
+                <p class="font-bold">Universitas Trisakti</p>
+                <p class="text-gray-600">S1 Manajemen Keuangan | 2020 - sekarang</p>
+            </div>
+
+            <div class="mt-6 border-t pt-4 grid grid-cols-3 gap-4">
+                <div>
+                    <h2 class="text-lg font-semibold">Soft Skills</h2>
+                    <ul class="list-disc ml-5 text-gray-700 mt-2">
+                        <li>Komunikasi</li>
+                        <li>Kepemimpinan</li>
+                    </ul>
+                </div>
+                <div>
+                    <h2 class="text-lg font-semibold">Hard Skills</h2>
+                    <ul class="list-disc ml-5 text-gray-700 mt-2">
+                        <li>Financial Planning</li>
+                        <li>Accounting Skills</li>
+                    </ul>
+                </div>
+                <div>
+                    <h2 class="text-lg font-semibold">Bahasa</h2>
+                    <ul class="list-disc ml-5 text-gray-700 mt-2">
+                        <li>Bahasa Indonesia</li>
+                        <li>English (IELTS 7.0)</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -39,8 +63,9 @@
 
 <script setup>
     import {
-      onMounted,
-        ref
+        onMounted,
+        ref,
+        computed
     } from 'vue';
     import {
         useCvStore
@@ -76,9 +101,14 @@
             endDate: "2015",
         }, ],
     });
-    onMounted(() => {
-        console.log(cvStore.cv);
-    })
+    const personalDetails = computed(() => cvStore.cv.personalDetails);
+    const experiences = computed(() => cvStore.cv.experiences);
+    const educations = computed(() => cvStore.cv.educations);
+    const langSkills = computed(() => cvStore.cv.langSkills);
+    const hardSkills = computed(() => cvStore.cv.hardSkills);
+    const softSkills = computed(() => cvStore.cv.softSkills);
+    const certSkills = computed(() => cvStore.cv.certSkills);
+    const socialsSkills = computed(() => cvStore.cv.socialsSkills);
 </script>
 
 <style scoped>

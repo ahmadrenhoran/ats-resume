@@ -279,13 +279,13 @@
     const previewCv = () => {
         cvStore.setCvData({
             personalDetails: personalDetails,
-            experiences: experiences,
-            educations: educations,
-            langSkills: langSkills,
-            hardSkills: hardSkills,
-            softSkills: softSkills,
-            certSkills: certSkills,
-            socialSkills: socialSkills,
+            experiences: experiences.value,
+            educations: educations.value,
+            langSkills: langSkills.value,
+            hardSkills: hardSkills.value,
+            softSkills: softSkills.value,
+            certSkills: certSkills.value,
+            socialSkills: socialSkills.value,
         })
        router.push('/preview');
     };
