@@ -158,14 +158,24 @@
 <script setup>
     import {
         ref,
-        onMounted
+        onMounted,
+        defineExpose,
     } from 'vue';
+    import {
+        useRouter
+    } from 'vue-router';
+    import {
+        useCvStore
+    } from '@/stores/CvStore.js';
     import autoAnimate from '@formkit/auto-animate';
     import Experience from './ExperienceField.vue';
     import Education from './EducationField.vue';
     import Additional from './AdditionalCard.vue';
     import SkillInput from './SkillField.vue';
     import TextEditor from './TextEditor.vue';
+    
+    const router = useRouter();
+    const cvStore = useCvStore();
 
     const personalDetails = ref({
         jobTitle: '',
@@ -176,7 +186,7 @@
         city: '',
         country: '',
         bio: '',
-    })
+    });
 
     const experiences = ref([{
         title: '',
@@ -209,27 +219,27 @@
     const selectionContainer = ref(null);
 
     const langSkills = ref([{
-        'name': '', 
+        'name': '',
         'level': ''
     }]);
 
     const hardSkills = ref([{
-        'name': '', 
+        'name': '',
         'level': ''
     }]);
 
     const softSkills = ref([{
-        'name': '', 
+        'name': '',
         'level': ''
     }]);
 
     const certSkills = ref([{
-        'name': '', 
+        'name': '',
         'level': ''
     }]);
 
     const socialSkills = ref([{
-        'name': '', 
+        'name': '',
         'level': ''
     }]);
 
@@ -266,6 +276,23 @@
         educations.value.splice(index, 1);
     };
 
+    const previewCv = () => {
+        cvStore.setCvData({
+            personalDetails: personalDetails,
+            experiences: experiences,
+            educations: educations,
+            langSkills: langSkills,
+            hardSkills: hardSkills,
+            softSkills: softSkills,
+            certSkills: certSkills,
+            socialSkills: socialSkills,
+        })
+       router.push('/preview');
+    };
+
+    defineExpose({
+        previewCv
+    });
     onMounted(() => {
         if (experienceContainer.value) {
             autoAnimate(experienceContainer.value);
