@@ -43,8 +43,6 @@
         class="border border-amber-500 hover:bg-amber-500 hover:text-white text-sm py-3 rounded-xl transition delay-150">
         + Add Skill
     </button>
-
-    <FloatingButton text="Preview CV"/>
 </template>
 
 <script setup>

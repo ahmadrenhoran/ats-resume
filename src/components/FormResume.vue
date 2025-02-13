@@ -165,7 +165,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, defineExpose } from "vue";
+import { ref, onMounted, defineExpose, watch } from "vue";
 import { storeToRefs } from "pinia";
 import { useCvStore } from "@/stores/CvStore.js";
 import { useSectionStore } from "@/stores/SectionsStore.js"
@@ -206,6 +206,23 @@ const deleteEdu = (index) => cvStore.deleteEdu(index);
 const previewCv = () => {
     router.push('/preview')
 };
+
+
+watch(selectLangSection, (newValue) => {
+    if (!newValue) cvStore.resetSkill('langSkills');
+});
+watch(selectHardSklSection, (newValue) => {
+    if (!newValue) cvStore.resetSkill('hardSkills');
+});
+watch(selectSoftSklSection, (newValue) => {
+    if (!newValue) cvStore.resetSkill('softSkills');
+});
+watch(selectCertSection, (newValue) => {
+    if (!newValue) cvStore.resetSkill('certSkills');
+});
+watch(selectSocialSection, (newValue) => {
+    if (!newValue) cvStore.resetSkill('socialSkills');
+});
 
 defineExpose({
     previewCv,
