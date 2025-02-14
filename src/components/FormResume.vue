@@ -94,7 +94,7 @@
                 <Education v-for="(education, index) in educations" :key="index" :education="education" :index="index"
                     :deleteEdu="() => deleteEdu(index)" />
             </div>
-            <button @click="addEdu"
+            <button @click="addEdu" 
                 class="border border-amber-500 hover:bg-amber-500 hover:text-white text-sm py-3 rounded-xl transition delay-150">
                 Add Education
             </button>
@@ -176,7 +176,6 @@ import Education from "./EducationField.vue";
 import Additional from "./AdditionalCard.vue";
 import SkillInput from "./SkillField.vue";
 import TextEditor from "./TextEditor.vue";
-import FloatingButton from "@/components/FloatingButton.vue";
 
 const cvStore = useCvStore();
 const sectionsStore = useSectionStore();
@@ -207,22 +206,6 @@ const previewCv = () => {
     router.push('/preview')
 };
 
-
-watch(selectLangSection, (newValue) => {
-    if (!newValue) cvStore.resetSkill('langSkills');
-});
-watch(selectHardSklSection, (newValue) => {
-    if (!newValue) cvStore.resetSkill('hardSkills');
-});
-watch(selectSoftSklSection, (newValue) => {
-    if (!newValue) cvStore.resetSkill('softSkills');
-});
-watch(selectCertSection, (newValue) => {
-    if (!newValue) cvStore.resetSkill('certSkills');
-});
-watch(selectSocialSection, (newValue) => {
-    if (!newValue) cvStore.resetSkill('socialSkills');
-});
 
 defineExpose({
     previewCv,

@@ -1,5 +1,5 @@
 <template>
-    <button @click="onClick"
+    <button @click="onClick" style="cursor: pointer;"
       class="font-mono fixed bottom-6 left-1/2 transform -translate-x-1/2 py-2 px-4 rounded-2xl shadow-xl font-medium transition-all duration-300 flex items-center gap-2"
       :class="[bgColor, hoverBgColor, textColor]">
       <slot>
