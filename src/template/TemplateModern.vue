@@ -64,7 +64,7 @@
                 <h2 class="text-lg font-semibold">Websites & Socials</h2>
                 <ul class="list-disc ml-5 mt-2">
                     <li v-for="(social, index) in socialSkills" :key="index">
-                        <a :href="social.link" target="_blank" class="hover:underline">
+                        <a :href="social.level" target="_blank" class="hover:underline">
                             {{ social.name }}
                         </a>
                     </li>

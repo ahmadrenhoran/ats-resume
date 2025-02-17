@@ -1,14 +1,18 @@
 # buildmyresume
 
-This template should help get you started developing with Vue 3 in Vite.
+Web for you to create resume with ATS format.
 
-## Recommended IDE Setup
+## Demo
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+[Demo Website](https://cvbuilder-ahmadrenhoran.netlify.app/)
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
+### Stack
+- Vue 3
+- Tailwind v4
+- Pinia
+- html2pdf.js
+- Vue Router
+- Quill for Rich Text
 
 ## Project Setup
 
