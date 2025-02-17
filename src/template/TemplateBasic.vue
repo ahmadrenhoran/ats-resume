@@ -53,7 +53,7 @@
                 <h2 class="text-lg font-semibold">Hard Skills</h2>
                 <ul class="list-disc ml-5 mt-2">
                     <li v-for="(skill, index) in hardSkills" :key="index">
-                        {{ skill.name }}
+                        {{ skill.name }} - {{ skill.level }}
                     </li>
                 </ul>
             </div>
@@ -71,7 +71,7 @@
                 <h2 class="text-lg font-semibold">Certificates</h2>
                 <ul class="list-disc ml-5 mt-2">
                     <li v-for="(cert, index) in certSkills" :key="index">
-                        {{ cert.name }} - {{ cert.year }}
+                        {{ cert.name }} - {{ cert.level }}
                     </li>
                 </ul>
             </div>
@@ -80,7 +80,7 @@
                 <h2 class="text-lg font-semibold">Websites & Socials</h2>
                 <ul class="list-disc ml-5 mt-2">
                     <li v-for="(social, index) in socialSkills" :key="index">
-                        <a :href="social.link" target="_blank" class="hover:underline">
+                        <a :href="social.level" target="_blank" class="hover:underline">
                             {{ social.name }}
                         </a>
                     </li>

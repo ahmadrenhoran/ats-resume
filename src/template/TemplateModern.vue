@@ -31,7 +31,7 @@
             </div>
         </section>
 
-        <section v-if="selectLangSection || selectHardSklSection || selectSoftSklSection || selectCertSection" class="grid grid-cols-2 gap-4">
+        <section v-if="selectLangSection || selectHardSklSection || selectSoftSklSection || selectCertSection" class="grid grid-cols-3 gap-4">
             <div v-if="selectLangSection">
                 <h2 class="text-lg font-semibold">Languages</h2>
                 <ul class="list-disc ml-5 mt-2">
@@ -42,21 +42,32 @@
             <div v-if="selectHardSklSection">
                 <h2 class="text-lg font-semibold">Hard Skills</h2>
                 <ul class="list-disc ml-5 mt-2">
-                    <li v-for="(skill, index) in hardSkills" :key="index">{{ skill.name }}</li>
+                    <li v-for="(skill, index) in hardSkills" :key="index">{{ skill.name }} - {{ skill.level }}</li>
                 </ul>
             </div>
 
             <div v-if="selectSoftSklSection">
                 <h2 class="text-lg font-semibold">Soft Skills</h2>
                 <ul class="list-disc ml-5 mt-2">
-                    <li v-for="(skill, index) in softSkills" :key="index">{{ skill.name }}</li>
+                    <li v-for="(skill, index) in softSkills" :key="index">{{ skill.name }} - {{ skill.level }}</li>
                 </ul>
             </div>
 
             <div v-if="selectCertSection">
                 <h2 class="text-lg font-semibold">Certificates</h2>
                 <ul class="list-disc ml-5 mt-2">
-                    <li v-for="(cert, index) in certSkills" :key="index">{{ cert.name }} - {{ cert.year }}</li>
+                    <li v-for="(cert, index) in certSkills" :key="index">{{ cert.name }} - {{ cert.level }}</li>
+                </ul>
+            </div>
+
+            <div v-if="selectSocialSection">
+                <h2 class="text-lg font-semibold">Websites & Socials</h2>
+                <ul class="list-disc ml-5 mt-2">
+                    <li v-for="(social, index) in socialSkills" :key="index">
+                        <a :href="social.link" target="_blank" class="hover:underline">
+                            {{ social.name }}
+                        </a>
+                    </li>
                 </ul>
             </div>
         </section>
@@ -72,8 +83,8 @@ import { useSectionStore } from "@/stores/SectionsStore.js";
 const cvStore = useCvStore();
 const sectionsStore = useSectionStore();
 
-const { personalDetails, experiences, educations, langSkills, hardSkills, softSkills, certSkills } = storeToRefs(cvStore);
-const { selectLangSection, selectHardSklSection, selectSoftSklSection, selectCertSection } = storeToRefs(sectionsStore);
+const { personalDetails, experiences, educations, langSkills, hardSkills, softSkills, certSkills, socialSkills } = storeToRefs(cvStore);
+const { selectLangSection, selectHardSklSection, selectSoftSklSection, selectSocialSection, selectCertSection } = storeToRefs(sectionsStore);
 
 const fullName = computed(() => {
     const first = personalDetails.value?.firstName || "";
